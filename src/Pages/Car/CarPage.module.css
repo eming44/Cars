@@ -1,0 +1,195 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 50px;
+    background-color: #090909;
+}
+
+.title {
+    color: white;
+    align-self: center;
+    margin: 100px 0px 0px 0px;
+}
+
+.mainImage {
+    width: 900px;
+    height: 500px;
+    border-radius: 20px;
+}
+
+.logoImage {
+    width: 100px;
+    height: 100px;
+}
+
+.descriptionContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 700px;
+}
+
+.descriptionBox {
+    width: 400px;
+    color: white;
+    align-self: center;
+    margin-left: 50px;
+}
+
+
+.interiorContainer {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: center;
+    height: 700px;
+    margin-bottom: 50px;
+    margin-top: 200px;
+}
+
+.interiorDesignImg {
+    margin-top: 50px;
+    align-self: center;
+    width: 1400px;
+}
+
+.subTitle {
+    color: white;
+    margin-left: 40%;
+}
+
+.technicalSpecImg {
+    width: 500px;
+    height: 400px;
+    margin-right: 40px;
+}
+
+.horizontalContainer {
+    margin: 0 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.verticalDescription {
+    margin-right: 200px;
+    align-self: center;
+    color: white;
+}
+
+.specRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 55px;
+}
+
+.specParagraph {
+    font-size: medium;
+}
+
+.technicalSpecContainer {
+    opacity: 0;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.animateFadeIn {
+    opacity: 1;
+    transform: translateY(-200px);
+    transition: opacity .5s, transform 1s;
+}
+
+.tabs {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab {
+    width: 150px;
+}
+
+
+
+
+/* .tabPanel {
+    opacity: 0;
+    margin-top: 50px;
+    align-self: center;
+    width: 1000px;
+} */
+
+.tabPanelLeft {
+    opacity: 0;
+    margin-top: 50px;
+    align-self: center;
+    width: 1000px;
+
+    margin-left: 1600px;
+}
+
+.tabPanelRight {
+    opacity: 0;
+    margin-top: 50px;
+    align-self: center;
+    width: 1000px;
+
+    margin-right: 1600px;
+}
+
+
+
+
+.animateTabPanelLeft {
+    opacity: 1;
+    transition: opacity 1s, transform .5s;
+
+    transform: translateX(-750px);
+}
+
+.animateTabPanelRight {
+    opacity: 1;
+    transform: translateX(850px);
+    transition: opacity 1s, transform .5s;
+}
+
+
+
+
+/* @keyframes wipe-enter {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+
+@keyframes translatee {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateY(-200px);
+    }
+} */
+
+/* @media () {
+
+} */
+
+
+

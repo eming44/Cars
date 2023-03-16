@@ -1,0 +1,20 @@
+.navBar {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding-left: 50px;
+    height: 50px;
+    background-color: #414141;
+}
+
+.navItem {
+    display: flex;
+    width: 100px;
+    color: white;
+}
+
+.navLink {
+    justify-self: center;
+    align-self: center;
+    color: white;
+}

@@ -1,0 +1,123 @@
+.box {
+    display: grid;
+}
+
+.card {
+    grid-row: 1;
+    grid-column: 1;
+    width: 350px;
+    height: 350px;
+    border-radius: 8px;
+    background-color: #272727;
+}
+
+.popup {
+    display: grid;
+    grid-row: 1;
+    grid-column: 1;
+    margin-top: 300px;
+    margin-left: 300px;
+}
+
+.infoBtn {
+    grid-row: 1;
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    color: white;
+    font-size: large;
+    border-radius: 20px;
+    background-color: #121212;
+    box-shadow: 0px 0px 8px #d1d1d1;
+}
+
+.headerContainer {
+    height: 30%;
+    color: white;
+    padding-left: 20px;
+}
+
+#popupContainer {
+    grid-row: 1;
+    grid-column: 1;
+    background-color: #313131;
+    color: white;
+    height: 200px;
+    width: 250px;
+    border-radius: 8px;
+    animation: showMe .4s forwards;
+    padding: 20px;
+    z-index: 1;
+}
+
+.imageBox {
+    display: grid;
+    height: 70%;
+    overflow: hidden;
+}
+
+.cardImage {
+    grid-row: 1;
+    grid-column: 1;
+    object-fit: cover;
+    width: 100%;
+    min-height: 100%;
+    border-radius: 8px 8px 0 0;
+}
+
+.viewMoreButton {
+    width: 150px;
+    height: 50px;
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: center;
+    align-self: center;
+    border-radius: 25px;
+    border: 0px;
+    background-color: #515151;
+    color: white;
+    font-size: medium;
+    z-index: -1;
+}
+
+.viewMoreButton:hover {
+    background-color: #313131;
+    box-shadow: 0px 0px 20px #111111;
+    transition: background-color .2s, box-shadow .2s;
+}
+
+.imageBox:hover .cardImage{
+    filter: blur(10px);
+    transition: filter .3s;
+}
+
+.imageBox:hover .viewMoreButton {
+    z-index: 1;
+    filter: blur(0px);
+}
+
+.popupOpacityEnter {
+    opacity: 0;
+    visibility: collapse;
+}
+
+.popupOpacityEnterActive {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .2s, visibility .25s;
+}
+
+.popupOpacityExit {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popupOpacityExitActive {
+    opacity: 0;
+    visibility: collapse;
+    transition: opacity .2s, visibility .2s;
+}
+
