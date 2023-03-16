@@ -14,9 +14,9 @@ export const CarPage : FunctionComponent = () => {
     const [isNext, setIsNext] = useState(true);
     const { ref: interiorContainerRef, inView: isInteriorContainerVisible } = useInView({ triggerOnce: true });
     const { ref: technicalSpecContainerRef, inView: isTechnicalSpecContainerVisible } = useInView({ triggerOnce: true });
-    const { ref: myRef0, inView: isVisible0 } = useInView();
-    const { ref: myRef1, inView: isVisible1 } = useInView();
-    const { ref: myRef2, inView: isVisible2 } = useInView();
+    const { ref: engineTabRef, inView: isVisibleEngineTab } = useInView();
+    const { ref: transmissionTabRef, inView: isVisibleTransmissionTab } = useInView();
+    const { ref: brakesTabRef, inView: isVisibleBrakesTab } = useInView();
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
@@ -72,6 +72,14 @@ export const CarPage : FunctionComponent = () => {
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+
             <div className={`${s .interiorContainer} ${isInteriorContainerVisible ? s.animateFadeIn : ''}`} ref={interiorContainerRef}>
                 <h1 className={s.title}>Interior Design</h1>
                 {car?.interiorImageUrl && <img className={s.interiorDesignImg} src={require('' + "../../assets/" + car?.interiorImageUrl)} />} 
@@ -93,7 +101,7 @@ export const CarPage : FunctionComponent = () => {
                             <Tab className={s.tab} label="Wheels/Brakes" value="3" />
                         </TabList>
                     </Box>
-                    <TabPanel ref={myRef0} className={`${s.tabPanel, s.tabPanelRight} ${isVisible0 ? s.animateTabPanelRight : ''}`} value="1">
+                    <TabPanel ref={engineTabRef} className={`${s.tabPanel, s.tabPanelRight} ${isVisibleEngineTab ? s.animateTabPanelRight : ''}`} value="1">
                         <div className={s.horizontalContainer}>
                                 <img className={s.technicalSpecImg} src={require('' + "../../assets/bmwengine.png")} />
                             <div className={s.verticalDescription}>
@@ -120,7 +128,7 @@ export const CarPage : FunctionComponent = () => {
                             </div>
                         </div>
                     </TabPanel>
-                    <TabPanel ref={myRef1} className={`${s.tabPanel, isNext ? s.tabPanelLeft : s.tabPanelRight} ${isVisible1 ? (isNext ? s.animateTabPanelLeft : s.animateTabPanelRight) : ''}`} value="2">
+                    <TabPanel ref={transmissionTabRef} className={`${s.tabPanel, isNext ? s.tabPanelLeft : s.tabPanelRight} ${isVisibleTransmissionTab ? (isNext ? s.animateTabPanelLeft : s.animateTabPanelRight) : ''}`} value="2">
                     <div className={s.horizontalContainer}>
                                 <img className={s.technicalSpecImg} src={require('' + "../../assets/transmission.png")} />
                             <div className={s.verticalDescription}>
@@ -135,7 +143,7 @@ export const CarPage : FunctionComponent = () => {
                             </div>
                         </div>
                     </TabPanel>
-                    <TabPanel ref={myRef2} className={`${s.tabPanel, s.tabPanelLeft} ${isVisible2 ? s.animateTabPanelLeft : ''}`} value="3">
+                    <TabPanel ref={brakesTabRef} className={`${s.tabPanel, s.tabPanelLeft} ${isVisibleBrakesTab ? s.animateTabPanelLeft : ''}`} value="3">
                     <div className={s.horizontalContainer}>
                                 <img className={s.technicalSpecImg} src={require('' + "../../assets/carbrakes.png")} />
                             <div className={s.verticalDescription}>
