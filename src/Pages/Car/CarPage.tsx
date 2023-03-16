@@ -12,11 +12,12 @@ export const CarPage : FunctionComponent = () => {
     const [value, setValue] = useState('1');
     const [previousValue, setPreviousValue] = useState('1');
     const [isNext, setIsNext] = useState(true);
+    const { ref: overviewRef, inView: isOverViewVisible } = useInView({ triggerOnce: true });
     const { ref: interiorContainerRef, inView: isInteriorContainerVisible } = useInView({ triggerOnce: true });
     const { ref: technicalSpecContainerRef, inView: isTechnicalSpecContainerVisible } = useInView({ triggerOnce: true });
-    const { ref: engineTabRef, inView: isVisibleEngineTab } = useInView();
-    const { ref: transmissionTabRef, inView: isVisibleTransmissionTab } = useInView();
-    const { ref: brakesTabRef, inView: isVisibleBrakesTab } = useInView();
+    const { ref: engineTabRef, inView: isEngineTabVisible } = useInView();
+    const { ref: transmissionTabRef, inView: isTransmissionTabVisible } = useInView();
+    const { ref: brakesTabRef, inView: isBrakesTabVisible } = useInView();
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
@@ -30,14 +31,14 @@ export const CarPage : FunctionComponent = () => {
 
     return(
         <div className={s.container}>
-            <h1 className={s.title}>{car?.manufacturer} {car?.model} {car?.modification}</h1>
-            <div className={s.descriptionContainer}>
-                <div className={s.descriptionBox}>
+            <h1 className={`${s.title} ${isOverViewVisible ? s.fadeIn : ''}`}>{car?.manufacturer} {car?.model} {car?.modification}</h1>
+            <div ref={overviewRef} className={s.overviewContainer}>
+                <div className={`${s.overviewBox} ${isOverViewVisible ? s.fadeInDelayed : ''}`}>
                     <img className={s.logoImage} src={require('' + "../../assets/bmwlogo.png")} />
                     <h3>{car?.description}</h3>
                 </div>
-                <img className={s.mainImage} src={require('' + "../../assets/" + car?.url)} />
-                <div className={s.verticalDescription}>
+                <img className={`${s.mainImage} ${isOverViewVisible ? s.fadeIn : ''}`} src={require('' + "../../assets/" + car?.url)} />
+                <div className={`${s.overViewDescription} ${isOverViewVisible ? s.fadeInDelayed : ''}`}>
                     <div className={s.specRow}>
                         <h3>Manufacturer:</h3>
                         <p className={s.specParagraph}>{car?.manufacturer}</p>
@@ -70,40 +71,32 @@ export const CarPage : FunctionComponent = () => {
                         <h3>Weight:</h3>
                         <p className={s.specParagraph}>{car?.weight} kg</p>
                     </div>
-                </div>
+                </div> 
             </div>
-
-
-
-
-
-
-
-
-            <div className={`${s .interiorContainer} ${isInteriorContainerVisible ? s.animateFadeIn : ''}`} ref={interiorContainerRef}>
+            <div className={`${s .interiorContainer} ${isInteriorContainerVisible ? s.animateFadeInTop : ''}`} ref={interiorContainerRef}>
                 <h1 className={s.title}>Interior Design</h1>
                 {car?.interiorImageUrl && <img className={s.interiorDesignImg} src={require('' + "../../assets/" + car?.interiorImageUrl)} />} 
             </div>
-            <div ref={technicalSpecContainerRef} className={`${s.technicalSpecContainer} ${isTechnicalSpecContainerVisible ? s.animateFadeIn : ''}`}>
-            <h1 className={s.title}>Technical Specifications</h1>
-            <Box sx={{ width: "100%", typography: "body1", display: "flex", flexDirection: "column" }}>
-                <TabContext value={value}>
-                    <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                        <TabList className={s.tabs} onChange={handleChange} aria-label="lab API tabs example" 
-                            sx={{ 
-                                "& div": { justifyContent: "space-between", width: 500, },
-                                "& .MuiTabs-indicator": { color: "#eb4034", backgroundColor: "#eb4034", border: 1 },
-                                "& button": { borderRadius: 2, backgroundColor: "#515151", color: "#ffffff" },
-                                "& button.Mui-selected": { backgroundColor: "#313131", color: "#ffffff" }
-                            }}>
-                            <Tab className={s.tab} label="Engine" value="1" />
-                            <Tab className={s.tab} label="Transmission" value="2" />
-                            <Tab className={s.tab} label="Wheels/Brakes" value="3" />
-                        </TabList>
-                    </Box>
-                    <TabPanel ref={engineTabRef} className={`${s.tabPanel, s.tabPanelRight} ${isVisibleEngineTab ? s.animateTabPanelRight : ''}`} value="1">
+            <div ref={technicalSpecContainerRef} className={`${s.technicalSpecContainer} ${isTechnicalSpecContainerVisible ? s.animateFadeInTop : ''}`}>
+                <h1 className={s.title}>Technical Specifications</h1>
+                <Box sx={{ width: "100%", typography: "body1", display: "flex", flexDirection: "column" }}>
+                    <TabContext value={value}>
+                        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                            <TabList className={s.tabs} onChange={handleChange} aria-label="lab API tabs example" 
+                                sx={{ 
+                                    "& div": { justifyContent: "space-between", width: 500, },
+                                    "& .MuiTabs-indicator": { color: "#eb4034", backgroundColor: "#eb4034", border: 1 },
+                                    "& button": { borderRadius: 2, backgroundColor: "#515151", color: "#ffffff" },
+                                    "& button.Mui-selected": { backgroundColor: "#313131", color: "#ffffff" }
+                                }}>
+                                <Tab className={s.tab} label="Engine" value="1" />
+                                <Tab className={s.tab} label="Transmission" value="2" />
+                                <Tab className={s.tab} label="Wheels/Brakes" value="3" />
+                            </TabList>
+                        </Box>
+                        <TabPanel ref={engineTabRef} className={`${s.tabPanel, s.tabPanelRight} ${isEngineTabVisible ? s.animateTabPanelRight : ''}`} value="1">
                         <div className={s.horizontalContainer}>
-                                <img className={s.technicalSpecImg} src={require('' + "../../assets/bmwengine.png")} />
+                            <img className={s.technicalSpecImg} src={require('' + "../../assets/bmwengine.png")} />
                             <div className={s.verticalDescription}>
                                 <div className={s.specRow}>
                                     <h3>Horse power:</h3>
@@ -127,10 +120,10 @@ export const CarPage : FunctionComponent = () => {
                                 </div>
                             </div>
                         </div>
-                    </TabPanel>
-                    <TabPanel ref={transmissionTabRef} className={`${s.tabPanel, isNext ? s.tabPanelLeft : s.tabPanelRight} ${isVisibleTransmissionTab ? (isNext ? s.animateTabPanelLeft : s.animateTabPanelRight) : ''}`} value="2">
-                    <div className={s.horizontalContainer}>
-                                <img className={s.technicalSpecImg} src={require('' + "../../assets/transmission.png")} />
+                        </TabPanel>
+                        <TabPanel ref={transmissionTabRef} className={`${s.tabPanel, isNext ? s.tabPanelLeft : s.tabPanelRight} ${isTransmissionTabVisible ? (isNext ? s.animateTabPanelLeft : s.animateTabPanelRight) : ''}`} value="2">
+                        <div className={s.horizontalContainer}>
+                            <img className={s.technicalSpecImg} src={require('' + "../../assets/transmission.png")} />
                             <div className={s.verticalDescription}>
                                 <div className={s.specRow}>
                                     <h3>Transmission:</h3>
@@ -142,10 +135,10 @@ export const CarPage : FunctionComponent = () => {
                                 </div>
                             </div>
                         </div>
-                    </TabPanel>
-                    <TabPanel ref={brakesTabRef} className={`${s.tabPanel, s.tabPanelLeft} ${isVisibleBrakesTab ? s.animateTabPanelLeft : ''}`} value="3">
-                    <div className={s.horizontalContainer}>
-                                <img className={s.technicalSpecImg} src={require('' + "../../assets/carbrakes.png")} />
+                        </TabPanel>
+                        <TabPanel ref={brakesTabRef} className={`${s.tabPanel, s.tabPanelLeft} ${isBrakesTabVisible ? s.animateTabPanelLeft : ''}`} value="3">
+                        <div className={s.horizontalContainer}>
+                            <img className={s.technicalSpecImg} src={require('' + "../../assets/carbrakes.png")} />
                             <div className={s.verticalDescription}>
                                 <div className={s.specRow}>
                                     <h3>Front disc type:</h3>
@@ -173,9 +166,9 @@ export const CarPage : FunctionComponent = () => {
                                 </div>
                             </div>
                         </div>
-                    </TabPanel>
-                </TabContext>
-            </Box>
+                        </TabPanel>
+                    </TabContext>
+                </Box>
             </div>
         </div>
     );
