@@ -1,13 +1,10 @@
 import { useState, FunctionComponent, useRef, useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { getCar } from "../../CarsService";
-import Tabs from '@mui/material/Tabs';
-import s from './CarPage.module.css';
-// import './CarPage.module.css';
 import { Box, Tab } from "@mui/material";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { useInView } from "react-intersection-observer";
+import s from './CarPage.module.css';
 
 export const CarPage : FunctionComponent = () => {
     const { id } = useParams();
@@ -27,20 +24,9 @@ export const CarPage : FunctionComponent = () => {
 
     useEffect(() => {
         setIsNext(+previousValue < +value);
-
         setPreviousValue(value);
 
     }, [value]);
-
-    const animation = () => {
-
-        return isNext ? s.animateTabPanelRight : s.animateTabPanelLeft;
-
-    }
-
-
-
-
 
     return(
         <div className={s.container}>
@@ -50,13 +36,7 @@ export const CarPage : FunctionComponent = () => {
                     <img className={s.logoImage} src={require('' + "../../assets/bmwlogo.png")} />
                     <h3>{car?.description}</h3>
                 </div>
-
-
-                
                 <img className={s.mainImage} src={require('' + "../../assets/" + car?.url)} />
-
-
-
                 <div className={s.verticalDescription}>
                     <div className={s.specRow}>
                         <h3>Manufacturer:</h3>
@@ -92,16 +72,10 @@ export const CarPage : FunctionComponent = () => {
                     </div>
                 </div>
             </div>
-
-
-
             <div className={`${s .interiorContainer} ${isInteriorContainerVisible ? s.animateFadeIn : ''}`} ref={interiorContainerRef}>
                 <h1 className={s.title}>Interior Design</h1>
                 {car?.interiorImageUrl && <img className={s.interiorDesignImg} src={require('' + "../../assets/" + car?.interiorImageUrl)} />} 
             </div>
-  
-
-
             <div ref={technicalSpecContainerRef} className={`${s.technicalSpecContainer} ${isTechnicalSpecContainerVisible ? s.animateFadeIn : ''}`}>
             <h1 className={s.title}>Technical Specifications</h1>
             <Box sx={{ width: "100%", typography: "body1", display: "flex", flexDirection: "column" }}>
@@ -143,7 +117,6 @@ export const CarPage : FunctionComponent = () => {
                                     <h3>Torque:</h3>
                                     <p className={s.specParagraph}>{car?.torque} nm</p>
                                 </div>
-
                             </div>
                         </div>
                     </TabPanel>

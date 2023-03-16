@@ -37,7 +37,6 @@
     margin-left: 50px;
 }
 
-
 .interiorContainer {
     opacity: 0;
     display: flex;
@@ -122,9 +121,6 @@
     width: 150px;
 }
 
-
-
-
 /* .tabPanel {
     opacity: 0;
     margin-top: 50px;
@@ -137,7 +133,6 @@
     margin-top: 50px;
     align-self: center;
     width: 1000px;
-
     margin-left: 1600px;
 }
 
@@ -146,17 +141,12 @@
     margin-top: 50px;
     align-self: center;
     width: 1000px;
-
     margin-right: 1600px;
 }
-
-
-
 
 .animateTabPanelLeft {
     opacity: 1;
     transition: opacity 1s, transform .5s;
-
     transform: translateX(-750px);
 }
 
@@ -165,31 +155,3 @@
     transform: translateX(850px);
     transition: opacity 1s, transform .5s;
 }
-
-
-
-
-/* @keyframes wipe-enter {
-    0% {
-        transform: scale(0);
-    }
-    50% {
-        transform: scale(1);
-    }
-}
-
-@keyframes translatee {
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateY(-200px);
-    }
-} */
-
-/* @media () {
-
-} */
-
-
-

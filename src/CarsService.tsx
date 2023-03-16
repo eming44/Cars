@@ -17,7 +17,6 @@ const cars =  [
     { id: 11, url: 'ferrarisf90.jpg', manufacturer: "Ferrari", model: "SF90", generation: "Spider", modification: "4.0 V8 PHEV AWD F1", releaseDate: 2020, acceleration: 2.5, maxSpeed: 340, hp: 1000, engineDisplacement: 3990, torque: 800, numberCilinders: 8, fuel: "petrol / electric", weight: 1670, cfc: "7.9", transmissionType: "Automatic", gears: 8, description: "" },
   ];
 
-
 export function getCars() {
     return cars;
 }
