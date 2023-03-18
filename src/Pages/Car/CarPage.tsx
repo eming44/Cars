@@ -5,6 +5,7 @@ import { Box, Tab } from "@mui/material";
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { useInView } from "react-intersection-observer";
 import s from './CarPage.module.css';
+import { Carousel } from "../../Components/Carousel/Carousel";
 
 export const CarPage : FunctionComponent = () => {
     const { id } = useParams();
@@ -73,9 +74,9 @@ export const CarPage : FunctionComponent = () => {
                     </div>
                 </div> 
             </div>
-            <div className={`${s .interiorContainer} ${isInteriorContainerVisible ? s.animateFadeInTop : ''}`} ref={interiorContainerRef}>
+            <div className={`${s.interiorContainer} ${isInteriorContainerVisible ? s.animateFadeInTop : ''}`} ref={interiorContainerRef}>
                 <h1 className={s.title}>Interior Design</h1>
-                {car?.interiorImageUrl && <img className={s.interiorDesignImg} src={require('' + "../../assets/" + car?.interiorImageUrl)} />} 
+                <Carousel urls={car?.interiorImageUrls!} />
             </div>
             <div ref={technicalSpecContainerRef} className={`${s.technicalSpecContainer} ${isTechnicalSpecContainerVisible ? s.animateFadeInTop : ''}`}>
                 <h1 className={s.title}>Technical Specifications</h1>

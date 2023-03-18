@@ -68,6 +68,7 @@
     flex-direction: column;
     align-content: space-between;
     justify-content: center;
+    row-gap: 60px;
     height: 700px;
     margin-bottom: 50px;
     margin-top: 200px;
