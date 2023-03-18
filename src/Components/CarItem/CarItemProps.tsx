@@ -18,7 +18,7 @@ export interface CarItemProps {
     transmissionType: string, 
     gears: number,
     description?: string,
-    interiorImageUrl?: string
+    interiorImageUrls?: string[],
     frontDiscType?: string,
     rareDiscType?: string,
     frontDiscMaterial?: string,
