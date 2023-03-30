@@ -1,23 +1,37 @@
-import { FunctionComponent, useState } from "react"; 
+import { FunctionComponent, useState, useLayoutEffect, useRef } from "react"; 
 import { CarouselItem } from "./CarouselItem/CarouselITem";
 import { CarouselProps } from "./CarouselProps";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { MdOutlineNavigateBefore } from "react-icons/md";
 import s from './Carousel.module.css'; 
+import ReactDOM from "react-dom";
 
 export const Carousel : FunctionComponent<CarouselProps> = ({ urls }) => {
     const [x, setX] = useState(0);
     const [index, setIndex] = useState(0);
+    const [step, setStep] = useState(200);
+    const listElement = useRef(null);
     const [isLeftBtnVisible, setIsLeftBtnVisible] = useState(false);
     const [isRightBtnVisible, setIsRightBtnVisible] = useState(true);
     const items = urls.slice(0).map((u, i) => 
-        <li className={s.carouselLi} key={i.toString()}><CarouselItem url={u} isMain={i === index} isLeft={i < index} /></li>
+        <li ref={listElement} className={s.carouselLi} key={i.toString()}><CarouselItem url={u} isMain={i === index} isLeft={i < index} /></li>
     );
+
+    useLayoutEffect(() => {
+        if (listElement.current != null) {
+            let listElementNode = ReactDOM.findDOMNode(listElement.current) as HTMLDivElement;
+            let liMaxWidth = window.getComputedStyle(listElementNode).getPropertyValue('max-width');
+            let liMaxWidthValue = liMaxWidth.slice(0, liMaxWidth.length - 2);
+            let liMargin = window.getComputedStyle(listElementNode).getPropertyValue('margin-left');
+            let liLeftRightMargin = +liMargin.slice(1, 3) * 2;
+            setStep((+liMaxWidthValue)- liLeftRightMargin);
+        }
+    }, [])
 
     function previous() {
         let xCoordinate = x;
         if (xCoordinate != 0) {
-            xCoordinate += 900;
+            xCoordinate += step;
             setX(xCoordinate);
             setIndex(index - 1);
 
@@ -33,8 +47,8 @@ export const Carousel : FunctionComponent<CarouselProps> = ({ urls }) => {
 
     function next() {
         let xCoordinate = x;
-        if (xCoordinate > -900 * (items.length - 1)) {
-            xCoordinate -= 900;
+        if (xCoordinate > -step * (items.length - 1)) {
+            xCoordinate -= step;
             setX(xCoordinate);
             setIndex(index + 1);
 
@@ -43,7 +57,7 @@ export const Carousel : FunctionComponent<CarouselProps> = ({ urls }) => {
             }
         }
         
-        if (xCoordinate === -900 * (items.length - 1)) {
+        if (xCoordinate === -step * (items.length - 1)) {
             setIsRightBtnVisible(false);
         }
     }
