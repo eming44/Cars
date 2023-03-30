@@ -1,6 +1,7 @@
 .container {
     display: grid;
     background-color: black;
+    width: 100%;
 }
 
 .carousel {
@@ -59,4 +60,51 @@
     justify-content: center;
     align-content: center; 
     margin: 0px -50px; 
+}
+
+@media (max-width: 1200px) {
+    .btn {
+        height: 40px;
+        font-size: 30px;
+    }
+
+    .carouselLi {
+        max-width: 500px;
+        min-width: 500px;
+        max-height: 300px; 
+        min-height: 300px; 
+        margin: 0px -25px; 
+    }
+
+    .slider {
+        padding-left: calc(50% - 265px);
+    }   
+}
+
+@media (max-width: 500px) {
+    .btn {
+        height: 30px;
+        width: 30px;
+        font-size: 30px;
+    }
+
+    .carouselLi {
+        max-width: 250px;
+        min-width: 250px;
+        max-height: 150px; 
+        min-height: 150px; 
+        margin: 0px -25px; 
+    }
+
+    .leftBtn {
+        margin-left: 5px;
+    }
+    
+    .rightBtn {
+        margin-right: 5px;
+    }
+    
+    .slider {
+        padding-left: calc(50% - 140px);
+    }   
 }

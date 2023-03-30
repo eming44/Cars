@@ -9,6 +9,7 @@ import s from './CarItem.module.css';
 export const CarItem : FunctionComponent<CarItemProps> = (props: CarItemProps) => {
     const [show, setShow] = useState<boolean>(false);
     const navigate = useNavigate();
+    const carSpecs = props.baseSpecs!;
 
     function toggleShow() {
         setShow(!show);
@@ -30,11 +31,11 @@ export const CarItem : FunctionComponent<CarItemProps> = (props: CarItemProps) =
                     <button className={s.viewMoreButton} onClick={navigateToDetailedCar}>View More</button>
                 </div>
                 <div className={s.headerContainer}>
-                    <h4>{props.manufacturer}</h4>
-                    <p>{props.model}</p>
+                    <h4>{Object.values(carSpecs['manufacturer' as keyof typeof carSpecs])}</h4>
+                   <p>{Object.values(carSpecs['model' as keyof typeof carSpecs])}</p>
                 </div>
             </div>
-            <div className={s.popup}>
+            {/* <div className={s.popup}>
                 <CSSTransition key={props.manufacturer}
                     in={show}
                     timeout={1000}
@@ -51,7 +52,7 @@ export const CarItem : FunctionComponent<CarItemProps> = (props: CarItemProps) =
                         </div>
                     </CSSTransition>
                 <button className={ s.infoBtn } onClick={toggleShow}>{<BsInfoCircle />}</button>
-            </div>
+            </div> */}
         </div>
     );
 }

@@ -1,0 +1,30 @@
+.horizontalContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.technicalSpecImg {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.listContainer {
+    width: 300px;
+    max-width: 300px;
+}
+
+@media (max-width: 1200px) { 
+    .technicalSpecImg {
+        max-width: 250px;
+        max-height: 250px;
+    }
+
+    .horizontalContainer {
+        gap: 10px;
+    }
+}

@@ -6,7 +6,7 @@ import s from './CarsPage.module.css';
 export const CarsPage: FunctionComponent = () => {
     const cars = getCars();
     const itemsList = cars.map((x) => 
-        <li key={x.id.toString()}><CarItem {...x}/></li>
+        <li className={s.listItem} key={x.id.toString()}><CarItem {...x}/></li>
     );
 
     return(

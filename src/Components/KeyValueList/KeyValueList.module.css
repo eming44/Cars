@@ -1,0 +1,27 @@
+.list {
+    list-style-type: none;
+    padding: 0px;
+    width: 100%;
+}
+
+.listItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+.value {
+    font-size: medium;
+}
+
+@media (max-width: 1200px) { 
+    .title {
+        font-size: medium;
+    }
+
+    .value {
+        font-size: small;
+    }
+}
