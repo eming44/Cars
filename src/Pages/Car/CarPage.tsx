@@ -1,14 +1,16 @@
 import { useState, FunctionComponent, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getCar } from "../../CarsService";
 import { Box, Tab } from "@mui/material";
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { useInView } from "react-intersection-observer";
 import { KeyValueList } from "../../Components/KeyValueList/KeyValueList";
 import { Carousel } from "../../Components/Carousel/Carousel";
 import { SpecTab } from "../../Components/SpecTab/SpecTab";
+import { getCar } from "../../Services/CarsService";
+import { getLogo } from "../../Services/LogoService";
+import { GiCarDoor } from 'react-icons/gi'
+import { GiCarSeat } from 'react-icons/gi'
 import s from './CarPage.module.css';
-import { getLogo } from "../../LogoService";
 
 export const CarPage : FunctionComponent = () => {
     const { id } = useParams();
@@ -16,8 +18,11 @@ export const CarPage : FunctionComponent = () => {
     const [value, setValue] = useState('1');
     const [previousValue, setPreviousValue] = useState('1');
     const [isNext, setIsNext] = useState(true);
+    const [resetCarousel, setResetCarousel] = useState(false);
+    const [designUrls, setDesignUrls] = useState(car?.exteriorImageUrls);
+    const [currentDesign, setCurrentDesign] = useState(false);
     const { ref: overviewRef, inView: isOverViewVisible } = useInView({ triggerOnce: true });
-    const { ref: interiorContainerRef, inView: isInteriorContainerVisible } = useInView({ triggerOnce: true });
+    const { ref: designContainerRef, inView: isDesignContainerVisible } = useInView({ triggerOnce: true });
     const { ref: technicalSpecContainerRef, inView: isTechnicalSpecContainerVisible } = useInView({ triggerOnce: true });
     const { ref: engineTabRef, inView: isEngineTabVisible } = useInView();
     const { ref: transmissionTabRef, inView: isTransmissionTabVisible } = useInView();
@@ -26,6 +31,19 @@ export const CarPage : FunctionComponent = () => {
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
     };
+
+    function setExteriorDesigns() {
+        setCurrentDesign(false);
+        setResetCarousel(!resetCarousel);
+        setDesignUrls(car?.exteriorImageUrls);
+    }
+
+    function setInteriorDesigns() {
+        setCurrentDesign(true);
+        setResetCarousel(!resetCarousel);
+        setDesignUrls(car?.interiorImageUrls);
+        
+    }
 
     useEffect(() => {
         setIsNext(+previousValue < +value);
@@ -53,9 +71,13 @@ export const CarPage : FunctionComponent = () => {
                     </div> 
                 </div>
             </div>
-            <div className={`${s.interiorContainer} ${isInteriorContainerVisible ? s.animateFadeInTop : ''}`} ref={interiorContainerRef}>
-                <h1 className={s.title}>Interior Design</h1>
-                <Carousel urls={car?.interiorImageUrls!} />
+            <div className={`${s.designContainer} ${isDesignContainerVisible ? s.animateFadeInTop : ''}`} ref={designContainerRef}>
+                <h1 className={s.title}>{currentDesign ? "Interior Design" : "Exterior Design"}</h1>
+                <div className={s.designPanel}>
+                    <button className={s.designBtn} disabled={!currentDesign} onClick={setExteriorDesigns}><GiCarDoor /></button>
+                    <button className={s.designBtn} disabled={currentDesign} onClick={setInteriorDesigns}><GiCarSeat /></button>
+                </div>
+                <Carousel urls={designUrls!} triggerReset={resetCarousel}/>
             </div>
             <div ref={technicalSpecContainerRef} className={`${s.technicalSpecContainer} ${isTechnicalSpecContainerVisible ? s.animateFadeInTop : ''}`}>
                 <h1 className={s.title}>Technical Specifications</h1>

@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { CarItem } from "../../Components/CarItem/CarItem";
-import { getCars } from "../../CarsService"
+import { getCars } from "../../Services/CarsService"
 import s from './CarsPage.module.css';
 
 export const CarsPage: FunctionComponent = () => {
