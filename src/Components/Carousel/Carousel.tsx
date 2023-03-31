@@ -6,13 +6,14 @@ import { MdOutlineNavigateBefore } from "react-icons/md";
 import s from './Carousel.module.css'; 
 import ReactDOM from "react-dom";
 
-export const Carousel : FunctionComponent<CarouselProps> = ({ urls }) => {
+export const Carousel : FunctionComponent<CarouselProps> = ({ urls, triggerReset }) => {
     const [x, setX] = useState(0);
     const [index, setIndex] = useState(0);
     const [step, setStep] = useState(200);
-    const listElement = useRef(null);
     const [isLeftBtnVisible, setIsLeftBtnVisible] = useState(false);
     const [isRightBtnVisible, setIsRightBtnVisible] = useState(true);
+    const [isAnimationTriggered, setIsAnimationTriggered] = useState(false);
+    const listElement = useRef(null);
     const items = urls.slice(0).map((u, i) => 
         <li ref={listElement} className={s.carouselLi} key={i.toString()}><CarouselItem url={u} isMain={i === index} isLeft={i < index} /></li>
     );
@@ -27,6 +28,14 @@ export const Carousel : FunctionComponent<CarouselProps> = ({ urls }) => {
             setStep((+liMaxWidthValue)- liLeftRightMargin);
         }
     }, [])
+
+    useLayoutEffect(() => {
+        setX(0);
+        setIndex(0);
+        setIsLeftBtnVisible(false);
+        setIsRightBtnVisible(true);
+        setIsAnimationTriggered(true);
+    }, [triggerReset])
 
     function previous() {
         let xCoordinate = x;
@@ -61,9 +70,9 @@ export const Carousel : FunctionComponent<CarouselProps> = ({ urls }) => {
             setIsRightBtnVisible(false);
         }
     }
-    
+
     return(
-        <div className={s.container}>
+        <div className={`${s.container} ${isAnimationTriggered ? s.animateFadeIn : ''}`} onAnimationEnd={() => setIsAnimationTriggered(false)}>
             { isLeftBtnVisible && <button className={`${s.btn} ${s.leftBtn}`} onClick={previous}>{<MdOutlineNavigateBefore />}</button>}
             <div className={s.carousel}>
                 <div className={s.slider} style={{transform: `translateX(${x}px)`}}>

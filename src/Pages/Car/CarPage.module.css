@@ -78,7 +78,31 @@ h3 {
     transition-delay: .8s;
 }
 
-.interiorContainer {
+.designPanel {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+.designBtn {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px 10px 3px 3px;
+    font-size: x-large;
+    color: white;
+    border-color: #fc4e42;
+    border-width: 0px;
+    background-color: #414141;
+    transition: border-width 0.1s;
+}
+
+.designBtn:disabled {
+    border-width: 0px 0px 4px 0px;
+    background-color: #181818;
+    transition: border-width 0.1s;
+}
+
+.designContainer {
     opacity: 0;
     display: flex;
     flex-direction: column;

@@ -1,3 +1,4 @@
 export interface CarouselProps {
-    urls: string[]
+    urls: string[],
+    triggerReset?: boolean
 }
