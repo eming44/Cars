@@ -7,4 +7,5 @@ export interface CarItemProps {
     brakeWheelSpecs?: object
     description?: string,
     interiorImageUrls?: string[],
+    trailerUrl?: string
 }

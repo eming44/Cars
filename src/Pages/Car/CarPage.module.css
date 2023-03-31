@@ -148,6 +148,12 @@ h3 {
     transition: opacity .5s, transform 1s;
 }
 
+.animateFadeInTopVideo {
+    opacity: 1;
+    transform: translateY(-400px);
+    transition: opacity .5s, transform 1s;
+}
+
 .tabs {
     display: flex;
     flex-direction: column;
@@ -157,6 +163,19 @@ h3 {
 .tab {
     width: 150px;
     color: black;
+}
+
+.testDriveContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    align-items: center;
+}
+
+.frame {
+    display: block;
+    aspect-ratio: 16 / 9;
+    width: 50%;
 }
 
 @media (max-width: 1200px) { 
@@ -231,5 +250,19 @@ h3 {
         opacity: 1;
         transform: translateX(0px);
         transition: opacity 1s, transform .5s;
+    }
+
+    .testDriveContainer {
+        row-gap: 30px;
+    }
+
+    .frame {
+        display: block;
+        aspect-ratio: 16 / 9;
+        width: 90%;
+    }
+
+    .animateFadeInTopVideo {
+        transform: translateY(-300px);
     }
 }

@@ -24,9 +24,10 @@ export const CarPage : FunctionComponent = () => {
     const { ref: overviewRef, inView: isOverViewVisible } = useInView({ triggerOnce: true });
     const { ref: designContainerRef, inView: isDesignContainerVisible } = useInView({ triggerOnce: true });
     const { ref: technicalSpecContainerRef, inView: isTechnicalSpecContainerVisible } = useInView({ triggerOnce: true });
-    const { ref: engineTabRef, inView: isEngineTabVisible } = useInView();
-    const { ref: transmissionTabRef, inView: isTransmissionTabVisible } = useInView();
-    const { ref: brakesTabRef, inView: isBrakesTabVisible } = useInView();
+    const { ref: engineTabRef, inView: isEngineTabVisible } = useInView({ triggerOnce: true });
+    const { ref: transmissionTabRef, inView: isTransmissionTabVisible } = useInView({ triggerOnce: true });
+    const { ref: brakesTabRef, inView: isBrakesTabVisible } = useInView({ triggerOnce: true });
+    const { ref: testDriveRef, inView: isTestDriveVisible } = useInView({ triggerOnce: true });
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
@@ -111,6 +112,10 @@ export const CarPage : FunctionComponent = () => {
                         </TabPanel>
                     </TabContext>
                 </Box>
+            </div>
+            <div ref={testDriveRef} className={`${s.testDriveContainer} ${isTestDriveVisible ? s.animateFadeInTopVideo : ''}`}>
+                <h1 className={s.title}>Trailer</h1>
+                <iframe className={s.frame} src={car?.trailerUrl} title="Embedded youtube" allowFullScreen/>
             </div>
         </div>
     );
