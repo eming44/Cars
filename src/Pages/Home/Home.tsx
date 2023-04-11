@@ -110,21 +110,21 @@ export const Home:FunctionComponent = () => {
                     <div className={s.horizontalBox}>
                         <div className={s.select}>
                             <p className={s.selectTitle}>Manufacturer</p>
-                            <Select options={manufacturerOptions} placeholder={"All"} onChange={handleManufacturerChange}/>
+                            <Select isClearable options={manufacturerOptions} placeholder={"All"} onChange={handleManufacturerChange}/>
                         </div>
                         <div className={s.select}>
                             <p className={s.selectTitle}>Model</p>
-                            <Select isDisabled={!isManufacturerSelected} options={modelsList} placeholder={"All"} onChange={handleModelChange}/>
+                            <Select isClearable isDisabled={!isManufacturerSelected} options={modelsList} placeholder={"All"} onChange={handleModelChange}/>
                         </div>
                     </div>
                     <div className={s.horizontalBox}>
                         <div className={s.select}>
                             <p className={s.selectTitle}>Engine</p>
-                            <Select options={engineOptions} placeholder={"All"} onChange={handleEngineChange}/>
+                            <Select isClearable options={engineOptions} placeholder={"All"} onChange={handleEngineChange}/>
                         </div>
                         <div className={s.select}>
                             <p className={s.selectTitle}>Transmission</p>
-                            <Select options={transmissionOptions} placeholder={"All"} onChange={handleTransmissionChange}/>
+                            <Select isClearable options={transmissionOptions} placeholder={"All"} onChange={handleTransmissionChange}/>
                         </div>
                     </div>
                     <div className={s.horizontalBox}>
