@@ -1,5 +1,59 @@
+body {
+    background-color: #515151;
+}
+
 .container {
-    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    background-color: #515151;
+    padding: 20px 0px;
+}
+
+.listItemContainer {
+    width: 100%;
+}
+
+.navigationContainer {
+    height: fit-content;
+    background-color: #212121;
+    position: sticky;
+    top: 0;
+    border-radius: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.navigationListContainer {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    list-style-type: none; 
+}
+
+.navBtnContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 20px;
+    margin: 10px 0px;
+}
+
+.logoImage {    
+    width: 50px;
+    height: 50px;
+}
+
+.navBtn {
+    font-size: medium;
+    color: white;
+    background-color: #313131;
+    justify-self: end;
+    width: 70%;
+    height: 50px;
+    border-radius: 25px;
+    border-width: 0px;
 }
 
 .list {
@@ -7,12 +61,42 @@
     display: flex;
     flex-direction: row;
     justify-content: left;
-    gap: 15px;
+    gap: 0px 15px;
     height: 100%;
     flex-wrap: wrap;
     list-style-type: none;
     background-color: #515151;
-    padding: 15px 0px 0px 15px;
+}
+
+.manufacturerSection {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.horizontalContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.sectionTitle {
+    display: flex;
+    color: white;
+    height: 40px;
+    background-color: #212121;
+    box-sizing: border-box;
+    padding: 0px 20px;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.rightLine {
+    height: 2px;
+    border-bottom: 2px solid;
+    border-color: #313131;
+    width: 100%;
 }
 
 .listItem {
@@ -35,5 +119,16 @@
     .listItem {
         width: 300px;
         height: 300px;
+    }
+
+    .leftLine {
+        height: 20px;
+        border-bottom: 2px solid;
+        border-color: #313131;
+        width: 100%;
+    }
+
+    .navigationContainer {
+        display: none;
     }
 }

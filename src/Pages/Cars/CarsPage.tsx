@@ -3,13 +3,18 @@ import { CarItem } from "../../Components/CarItem/CarItem";
 import { getCars } from "../../Services/CarsService"
 import { useSearchParams } from "react-router-dom";
 import { CarItemProps } from "../../Components/CarItem/CarItemProps";
+import { getLogo } from "../../Services/LogoService";
+import React from "react";
 import s from './CarsPage.module.css';
 
 export const CarsPage: FunctionComponent = () => {
     const [searchParams] = useSearchParams();
+
     const cars = getCars();
     let itemsList = [];
     let filters: Array<object> = [];
+    let filteredManufacturers: Array<string> = [];
+    let sectionRefs: Array<{sectionRef: Object, sectionName: string}> = [];
 
     for (const entry of searchParams.entries()) {
         const [param, value] = entry;
@@ -17,6 +22,7 @@ export const CarsPage: FunctionComponent = () => {
     }
 
     if (checkFiltersAreEmpty()) {
+        filteredManufacturers = getFilteredManufacturers(cars);
         itemsList = createListItems(cars);
     }
     else {
@@ -27,7 +33,9 @@ export const CarsPage: FunctionComponent = () => {
             && (getFilterValue('transmission') === '' || x.transmissionSpecs.transmission === getFilterValue('transmission'))
             && (getFilterValue('minHp') === '' || x.engineSpecs.horsePower >= +getFilterValue('minHp')!)
             && (getFilterValue('maxHp') === '' || x.engineSpecs.horsePower <= +getFilterValue('maxHp')!)
-            && (getFilterValue('releasedYear') === '' || x.baseSpecs.releaseDate >= +getFilterValue('releasedYear')!))
+            && (getFilterValue('releasedYear') === '' || x.baseSpecs.releaseDate >= +getFilterValue('releasedYear')!));
+
+        filteredManufacturers = getFilteredManufacturers(filteredList);
         itemsList = createListItems(filteredList);
     }
 
@@ -40,9 +48,25 @@ export const CarsPage: FunctionComponent = () => {
     }
 
     function createListItems(cars: Array<CarItemProps>) {
-        return cars.map(x => 
-            <li className={s.listItem} key={x.id.toString()}><CarItem {...x}/></li>
-        );
+        return filteredManufacturers.map((x, i) => {
+            const sectionRef = React.createRef();
+            sectionRefs.push({sectionRef: sectionRef, sectionName: x});
+            return <div className={s.manufacturerSection} ref={sectionRef as React.RefObject<HTMLDivElement>}>
+                <div className={s.horizontalContainer}>
+                    <div className={s.leftLine}/>
+                    <h2 className={s.sectionTitle}>{x}</h2>
+                    <div className={s.rightLine}/>
+                </div>
+                 <ul className={s.list}> {
+                    cars.map(c => { 
+                        if (c.baseSpecs?.manufacturer === x) {
+                            console.log(c.baseSpecs?.manufacturer)
+                            return <li className={s.listItem} key={c.id.toString()}><CarItem {...c}/></li>
+                        }
+                    })
+                } </ul>
+            </div>
+        });
     }
 
     function checkFiltersAreEmpty() {
@@ -56,14 +80,41 @@ export const CarsPage: FunctionComponent = () => {
         return isEmpty;
     }
 
+    function getFilteredManufacturers(cars: Array<CarItemProps>) {
+        let manufacturers: Array<string> = [];
+        cars.forEach((e) => {
+            if (!manufacturers.some((x) => x === e.baseSpecs?.manufacturer)) {
+                manufacturers.push(e.baseSpecs?.manufacturer as string)
+            }
+        })
+
+        return manufacturers;
+    }
+
+    const navigationBtns = sectionRefs.map((x, i) => <li onClick={e => {
+        const sectionRef = sectionRefs[i].sectionRef as React.RefObject<HTMLDivElement>;
+        sectionRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }}>
+        <div className={s.navBtnContainer}>
+            <img className={s.logoImage} src={require('' + "../../assets/" + getLogo(x.sectionName))} />
+            <button className={s.navBtn} >{x.sectionName}</button>
+        </div>
+    </li>);
+
     return(
         <div className={s.container}>
-            <ul className={s.list}>
-            {itemsList.length > 0 
-                ? itemsList 
-                : <h1 className={s.errorMessage}>No matches found</h1>
-            }
-            </ul>
+            <div className={s.listItemContainer}>
+                {itemsList}
+            </div>
+            <div className={s.navigationContainer}>
+                <h2 className={s.sectionTitle}>Filtered manufacturers</h2>
+                <ul className={s.navigationListContainer}>
+                    {navigationBtns}
+                </ul>
+            </div>
         </div>
     );
 };
