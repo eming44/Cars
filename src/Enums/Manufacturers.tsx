@@ -1,6 +1,7 @@
 export enum Manufacturers {
-    Bmw = "BMW",
     Audi = "Audi",
+    Bmw = "BMW",
+    Bugatti = "Bugatti",
     Ferrari = "Ferrari",
-    Lamborghini = "Lamborghini"
+    Lamborghini = "Lamborghini",
 }

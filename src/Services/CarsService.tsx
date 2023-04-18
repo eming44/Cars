@@ -1,5 +1,6 @@
 import { AudiModels } from "../Enums/AudiModels";
 import { BmwModels } from "../Enums/BmwModels";
+import { BugattiModels } from "../Enums/BugattiModels";
 import { Engines } from "../Enums/Engines";
 import { FerrariModels } from "../Enums/FerrariModels";
 import { LamborghiniModels } from "../Enums/LamborghiniModels";
@@ -44,6 +45,16 @@ const cars =  [
     exteriorImageUrls: ["bmw3ext.jpg", "bmw3ext1.jpg", "bmw3ext2.webp", "bmw3ext3.jpg",],
     interiorImageUrls: ["bmw3int.jpg", "bmw3int1.png", "bmw3int2.jpg", "bmw3int3.jpg",],
     trailerUrl: "https://www.youtube.com/embed/XaOrAnxEiI8" },
+
+    { id: 4, url: 'bugattichiron.jpg', 
+    baseSpecs: { manufacturer: Manufacturers.Bugatti, model: BugattiModels.Chiron, modification: "Super Sport 8.0 W16", generation: "Chiron", releaseDate: 2021, fuelConsumption: "40.3", maximumSpeed: 440, acceleration: 2.4, weight: 1995 }, 
+    engineSpecs: { horsePower: 1600, engineDisplacement: 7993, fuelType: Engines.Petrol, cilindersNumber: 16, torque: 1600 }, 
+    transmissionSpecs: {  transmission: Transmissions.Automatic, gears: 7 }, 
+    brakeWheelSpecs: { frontDiscType: "Ventilated", rareDiscType: "Disc", frontDiscMaterial: "Cast iron", rareDiscMaterial: "Cast iron", frontPadsMaterial: "Ceramic", rarePadsMaterial: "Ceramic"}, 
+    description: "As the follow-up to the legendary Veyron, the 2021 Chiron takes the brand's heritage and its predecessor's performance and melds them together into one stunning—and stunningly capable—machine. The Chiron's nearly $3 million price tag matches its extreme persona, but even for that kind of money it's almost a performance bargain. It's powered by a massive 16-cylinder engine that is a marvel of modern engineering, capable of propelling this hypercar to 300 mph and beyond.", 
+    exteriorImageUrls: ["bugattichironext.jpg", "bugattichironext1.jpg", "bugattichironext2.jpg", "bugattichironext3.jpg",], 
+    interiorImageUrls: ["bugattichironint.jpg", "bugattichironint1.jpg", "bugattichironint2.jpg", "bugattichironint3.jpg",],
+    trailerUrl: "https://www.youtube.com/embed/NMThdHhrLoM" },
  
     { id: 11, url: 'ferrarisf90.jpg', 
     baseSpecs: { manufacturer: Manufacturers.Ferrari, model: FerrariModels.sf90, modification: "4.0 V8 PHEV AWD F1", generation: "Spider", releaseDate: 2020, fuelConsumption: "7.9", maximumSpeed: 340, acceleration: 2.5, weight: 1670 }, 

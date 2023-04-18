@@ -53,9 +53,9 @@ export const CarsPage: FunctionComponent = () => {
             sectionRefs.push({sectionRef: sectionRef, sectionName: x});
             return <div className={s.manufacturerSection} ref={sectionRef as React.RefObject<HTMLDivElement>}>
                 <div className={s.horizontalContainer}>
-                    <div className={s.leftLine}/>
-                    <h2 className={s.sectionTitle}>{x}</h2>
+                    <img className={s.sectionLogoImage} src={require('' + "../../assets/" + getLogo(x))} />
                     <div className={s.rightLine}/>
+                    <h2 className={s.sectionTitle}>{x}</h2>
                 </div>
                  <ul className={s.list}> {
                     cars.map(c => { 
