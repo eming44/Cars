@@ -58,7 +58,7 @@ export const CarPage : FunctionComponent = () => {
     return(
         <div className={s.container}>
             <div className={s.section}>
-                <h1 className={`${s.title} ${isOverViewVisible ? s.fadeIn : ''}`}>{car?.baseSpecs.manufacturer} {car?.baseSpecs.model} {car?.baseSpecs.modification}</h1>
+                <h1 className={`${s.title} ${isOverViewVisible ? s.fadeIn : ''}`}>{car?.baseSpecs.manufacturer} {car?.baseSpecs.model}</h1>
                 <div ref={overviewRef} className={s.overviewContainer}>
                     <div className={`${s.overviewBox} ${isOverViewVisible ? s.fadeInDelayed : ''}`}>
                         <img className={s.logoImage} src={require('' + "../../assets/" + getLogo(car!.baseSpecs.manufacturer))} />

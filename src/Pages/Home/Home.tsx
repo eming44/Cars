@@ -8,6 +8,7 @@ import { Transmissions } from "../../Enums/Transmissions";
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import { AudiModels } from "../../Enums/AudiModels";
 import { BmwModels } from "../../Enums/BmwModels";
+import { BugattiModels } from "../../Enums/BugattiModels";
 import s from './Home.module.css';
 
 export const Home:FunctionComponent = () => {
@@ -44,6 +45,9 @@ export const Home:FunctionComponent = () => {
                 break;
             case Manufacturers.Lamborghini:
                 setModels(LamborghiniModels);
+                break;
+            case Manufacturers.Bugatti:
+                setModels(BugattiModels);
                 break;
         }
       };
