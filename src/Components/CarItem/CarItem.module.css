@@ -10,7 +10,9 @@
     grid-row: 1;
     grid-column: 1;
     border-radius: 8px;
-    background-color: #272727;
+
+    background-color: var(--secondary-background-color);
+    transition: background-color, var(--transition-delay);
 }
 
 .popup {
@@ -66,8 +68,10 @@
 
 .headerContainer {
     flex: 1 1 30%;
-    color: white;
     padding-left: 20px;
+
+    color: var(--text-color);
+    transition: color, var(--transition-delay);
 }
 
 .viewMoreButton {
@@ -79,15 +83,17 @@
     align-self: center;
     border-radius: 25px;
     border: 0px;
-    background-color: #515151;
-    color: white;
     font-size: medium;
     z-index: -1;
+
+    color: var(--text-color);
+    background-color: var(--quinary-background-color);
+    transition: color, var(--transition-delay);
 }
 
 .viewMoreButton:hover {
-    background-color: #313131;
-    box-shadow: 0px 0px 20px #111111;
+    background-color: var(--tertiary-background-color);
+    box-shadow: 0px 0px 20px var(--hover-background-color);
     transition: background-color .2s, box-shadow .2s;
 }
 

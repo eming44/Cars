@@ -9,7 +9,6 @@ import s from './CarsPage.module.css';
 
 export const CarsPage: FunctionComponent = () => {
     const [searchParams] = useSearchParams();
-
     const cars = getCars();
     let itemsList = [];
     let filters: Array<object> = [];
@@ -60,7 +59,6 @@ export const CarsPage: FunctionComponent = () => {
                  <ul className={s.list}> {
                     cars.map(c => { 
                         if (c.baseSpecs?.manufacturer === x) {
-                            console.log(c.baseSpecs?.manufacturer)
                             return <li className={s.listItem} key={c.id.toString()}><CarItem {...c}/></li>
                         }
                     })
@@ -84,14 +82,14 @@ export const CarsPage: FunctionComponent = () => {
         let manufacturers: Array<string> = [];
         cars.forEach((e) => {
             if (!manufacturers.some((x) => x === e.baseSpecs?.manufacturer)) {
-                manufacturers.push(e.baseSpecs?.manufacturer as string)
+                manufacturers.push(e.baseSpecs?.manufacturer as string,)
             }
         })
 
         return manufacturers;
     }
 
-    const navigationBtns = sectionRefs.map((x, i) => <li onClick={e => {
+    const navigationBtns = sectionRefs.map((x, i) => <li key={i} onClick={e => {
         const sectionRef = sectionRefs[i].sectionRef as React.RefObject<HTMLDivElement>;
         sectionRef.current?.scrollIntoView({
             behavior: 'smooth',

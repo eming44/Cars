@@ -1,7 +1,9 @@
 .container {
     display: grid;
-    background-color: black;
     width: 100%;
+
+    background-color: var(--background-color);
+    transition: background-color var(--transition-delay);
 }
 
 .carousel {

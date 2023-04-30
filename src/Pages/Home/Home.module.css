@@ -6,11 +6,13 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
-    background-color: #121212;
     background-repeat: no-repeat;
     box-sizing: border-box;
     align-items: center;
     padding: 50px;
+
+    background-color: var(--secondary-background-color);
+    transition: background-color var(--transition-delay);
 }
 
 .title {
@@ -25,7 +27,9 @@
     height: 100%;
     max-width: 500px;
     max-height: 530px;
-    background-color: #121212ee;
+
+    background-color: var(--background-color-opacity);
+    transition: background-color var(--transition-delay);
 }
 
 .horizontalBox {
@@ -59,7 +63,8 @@
 }
 
 .selectTitle {
-    color: white;
+    color: var(--text-color);
+    transition: color var(--transition-delay);
 }
 
 .input {
@@ -75,9 +80,11 @@ input[type=number]::-webkit-inner-spin-button {
 
 .selectYear {
     width: 100%;
-    background-color: #313131aa;
     padding: 10px;
     box-sizing: border-box;
+
+    background-color: var(--secondary-background-color-opacity);
+    transition: background-color var(--transition-delay);
 }
 
 .releasedYearContainer {
@@ -101,8 +108,10 @@ input[type=number]::-webkit-inner-spin-button {
 
 .rangeTitles {
     margin: 0px;
-    color: white;
     font-size: large;
+
+    color: var(--text-color);
+    transition: color var(--transition-delay);
 }
 
 .searchBtn {
