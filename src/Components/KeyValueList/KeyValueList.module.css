@@ -9,8 +9,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    color: white;
     column-gap: 15px;
+
+    color: var(--text-color);
+    transition: color var(--transition-delay);
 }
 
 .value {

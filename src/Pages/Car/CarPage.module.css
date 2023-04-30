@@ -3,12 +3,16 @@
     flex-direction: column;
     padding: 0px 20px;
     row-gap: 100px;
-    background-color: #090909;
+
+    background-color: var(--background-color);
+    transition: background-color, var(--transition-delay);
 }
 
 .title {
-    color: white;
     align-self: center;
+
+    color: var(--text-color);
+    transition: color, var(--transition-delay);
 }
 
 h3 {
@@ -40,11 +44,13 @@ h3 {
     flex-direction: column;
     align-items: center;
     opacity: 0;
-    color: white;
     min-width: 300px;
     box-sizing: border-box;
     padding: 0px 30px;
     margin-bottom: 15px;
+
+    color: var(--text-color);
+    transition: color, var(--transition-delay);
 }
 
 #mainImageContainer {
@@ -90,17 +96,19 @@ h3 {
     height: 40px;
     border-radius: 10px 10px 3px 3px;
     font-size: x-large;
-    color: white;
     border-color: #fc4e42;
     border-width: 0px;
-    background-color: #414141;
-    transition: border-width 0.1s;
+
+    color: var(--text-color );
+    background-color: var(--quaternary-background-color);
+    transition: border-width 0.1s, color, var(--transition-delay);
 }
 
 .designBtn:disabled {
     border-width: 0px 0px 4px 0px;
-    background-color: #181818;
-    transition: border-width 0.1s;
+
+    background-color: var(--disabled-background-color);
+    transition: border-width 0.1s, background-color, var(--transition-delay);
 }
 
 .designContainer {

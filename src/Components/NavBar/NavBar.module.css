@@ -1,20 +1,32 @@
 .navBar {
     display: flex;
+    top: 0;
+    position: sticky;
+    justify-content: flex-start;
     flex-direction: row;
     list-style-type: none;
     padding-left: 50px;
     height: 50px;
-    background-color: #212121;
+    z-index: 1000;
+
+    background-color: var(--secondary-background-color);
+    transition: background-color var(--transition-delay);
 }
 
 .navItem {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100px;
-    color: white;
+}
+
+.navItem:last-of-type {
+    padding: 10px;
+    box-sizing: border-box;
+    margin-left: auto;
 }
 
 .navLink {
-    justify-self: center;
-    align-self: center;
-    color: white;
+    color: var(--text-color);
+    transition: background-color var(--transition-delay);
 }

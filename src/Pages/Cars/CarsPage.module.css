@@ -1,13 +1,11 @@
-body {
-    background-color: #000000;
-}
-
 .container {
     display: flex;
     flex-direction: row;
     gap: 20px;
-    background-color: #000000;
     padding: 20px 0px;
+
+    background-color: var(--background-color);
+    transition: background-color, var(--transition-delay);
 }
 
 .listItemContainer {
@@ -16,7 +14,6 @@ body {
 
 .navigationContainer {
     height: fit-content;
-    background-color: #212121;
     position: sticky;
     top: 0;
     border-radius: 20px;
@@ -24,6 +21,9 @@ body {
     margin-right: 20px;
     padding: 20px;
     box-sizing: border-box;
+
+    background-color: var(--secondary-background-color);
+    transition: color, var(--transition-delay);
 }
 
 .navigationListContainer {
@@ -46,7 +46,8 @@ body {
 
 .navBtnContainer:hover {
     transition: background-color .3s;
-    background-color: #111111;
+
+    background-color: var(--hover-background-color);
  }
 
 .sectionLogoImage {
@@ -65,13 +66,15 @@ body {
 
 .navBtn {
     font-size: medium;
-    color: white;
-    background-color: #313131;
     justify-self: end;
     width: 70%;
     height: 50px;
     border-radius: 10px;
     border-width: 0px;
+
+    color: var(--text-color);
+    background-color: var(--tertiary-background-color);
+    transition: color, var(--transition-delay);
 }
 
 .list {
@@ -105,22 +108,26 @@ body {
 
 .sectionTitle {
     display: flex;
-    color: white;
     height: 40px;
-    background-color: #212121;
     box-sizing: border-box;
     padding: 0px 20px;
     border-radius: 10px;
     font-size: large;
     justify-content: center;
     align-items: center;
+
+    color: var(--text-color);
+    background-color: var(--secondary-background-color);
+    transition: color, var(--transition-delay);
 }
 
 .rightLine {
     height: 2px;
     border-bottom: 2px solid;
-    border-color: #313131;
     width: 100%;
+
+    border-color: var(--secondary-background-color);
+    transition: color, var(--transition-delay);
 }
 
 .listItem {
@@ -129,7 +136,8 @@ body {
 }
 
 .errorMessage {
-    color: white;
+    color: var(--text-color);
+    transition: color, var(--transition-delay);
 }
 
 @media (max-width: 800px) { 

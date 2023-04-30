@@ -58,60 +58,60 @@ export const CarPage : FunctionComponent = () => {
     return(
         <div className={s.container}>
             <div className={s.section}>
-                <h1 className={`${s.title} ${isOverViewVisible ? s.fadeIn : ''}`}>{car?.baseSpecs.manufacturer} {car?.baseSpecs.model}</h1>
-                <div ref={overviewRef} className={s.overviewContainer}>
-                    <div className={`${s.overviewBox} ${isOverViewVisible ? s.fadeInDelayed : ''}`}>
-                        <img className={s.logoImage} src={require('' + "../../assets/" + getLogo(car!.baseSpecs.manufacturer))} />
-                        <h3>{car?.description}</h3>
+                    <h1 className={`${s.title} ${isOverViewVisible ? s.fadeIn : ''}`}>{car?.baseSpecs.manufacturer} {car?.baseSpecs.model}</h1>
+                    <div ref={overviewRef} className={s.overviewContainer}>
+                        <div className={`${s.overviewBox} ${isOverViewVisible ? s.fadeInDelayed : ''}`}>
+                            <img className={s.logoImage} src={require('' + "../../assets/" + getLogo(car!.baseSpecs.manufacturer))} />
+                            <h3>{car?.description}</h3>
+                        </div>
+                        <div id={s.mainImageContainer}>
+                            <img className={`${s.mainImage} ${isOverViewVisible ? s.fadeIn : ''}`} src={require('' + "../../assets/" + car?.url)} />
+                        </div>
+                        <div className={`${s.overViewDescription} ${isOverViewVisible ? s.fadeInDelayed : ''}`}>
+                            <KeyValueList items={car!.baseSpecs} />
+                        </div> 
                     </div>
-                    <div id={s.mainImageContainer}>
-                        <img className={`${s.mainImage} ${isOverViewVisible ? s.fadeIn : ''}`} src={require('' + "../../assets/" + car?.url)} />
-                    </div>
-                    <div className={`${s.overViewDescription} ${isOverViewVisible ? s.fadeInDelayed : ''}`}>
-                        <KeyValueList items={car!.baseSpecs} />
-                    </div> 
-                </div>
             </div>
             <div className={`${s.designContainer} ${isDesignContainerVisible ? s.animateFadeInTop : ''}`} ref={designContainerRef}>
-                <h1 className={s.title}>{currentDesign ? "Interior Design" : "Exterior Design"}</h1>
-                <div className={s.designPanel}>
-                    <button className={s.designBtn} disabled={!currentDesign} onClick={setExteriorDesigns}><GiCarDoor /></button>
-                    <button className={s.designBtn} disabled={currentDesign} onClick={setInteriorDesigns}><GiCarSeat /></button>
-                </div>
-                <Carousel urls={designUrls!} triggerReset={resetCarousel}/>
+                    <h1 className={s.title}>{currentDesign ? "Interior Design" : "Exterior Design"}</h1>
+                    <div className={s.designPanel}>
+                        <button className={s.designBtn} disabled={!currentDesign} onClick={setExteriorDesigns}><GiCarDoor /></button>
+                        <button className={s.designBtn} disabled={currentDesign} onClick={setInteriorDesigns}><GiCarSeat /></button>
+                    </div>
+                    <Carousel urls={designUrls!} triggerReset={resetCarousel}/>
             </div>
             <div ref={technicalSpecContainerRef} className={`${s.technicalSpecContainer} ${isTechnicalSpecContainerVisible ? s.animateFadeInTop : ''}`}>
-                <h1 className={s.title}>Technical Specifications</h1>
-                <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
-                    <TabContext value={value}>
-                        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                            <TabList className={s.tabs} onChange={handleChange}
-                                sx={{ 
-                                    "& div": { justifyContent: "space-between", maxWidth: 500, },
-                                    "& .MuiTabs-indicator": { color: "#eb4034", backgroundColor: "#eb4034", border: 1 },
-                                    "& button": { borderRadius: 2, backgroundColor: "#515151", color: "#ffffff" },
-                                    "& button.Mui-selected": { backgroundColor: "#313131", color: "#ffffff" },
-                                    '@media (max-width: 500px)': {
-                                        "& button": { fontSize: "9px" },
-                                        "& button.Mui-selected": { fontSize: "9px" }
-                                      },
-                                }}>
-                                <Tab className={s.tab} label="Engine" value="1" />
-                                <Tab className={s.tab} label="Transmission" value="2" />
-                                <Tab className={s.tab} label="Wheels/Brakes" value="3" />
-                            </TabList>
-                        </Box>
-                        <TabPanel ref={engineTabRef} className={`${s.tabPanel} ${s.tabPanelRight} ${isEngineTabVisible ? s.animateTabPanelRight : ''}`} value="1">
-                            <SpecTab imgUrl={"bmwengine.png"} list={car!.engineSpecs} />
-                        </TabPanel>
-                        <TabPanel ref={transmissionTabRef} className={`${s.tabPanel} ${isNext ? s.tabPanelLeft : s.tabPanelRight} ${isTransmissionTabVisible ? (isNext ? s.animateTabPanelLeft : s.animateTabPanelRight) : ''}`} value="2">
-                            <SpecTab imgUrl={"transmission.png"} list={car!.transmissionSpecs} />
-                        </TabPanel>
-                        <TabPanel ref={brakesTabRef} className={`${s.tabPanel} ${s.tabPanelLeft} ${isBrakesTabVisible ? s.animateTabPanelLeft : ''}`} value="3">
-                            <SpecTab imgUrl={"carbrakes.png"} list={car!.brakeWheelSpecs} />
-                        </TabPanel>
-                    </TabContext>
-                </Box>
+                    <h1 className={s.title}>Technical Specifications</h1>
+                    <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
+                        <TabContext value={value}>
+                            <Box sx={{ borderBottom: 0 }}>
+                                <TabList className={s.tabs} onChange={handleChange}
+                                    sx={{ 
+                                        "& div": { justifyContent: "space-between", maxWidth: 500, },
+                                        "& .MuiTabs-indicator": { color: "#eb4034", backgroundColor: "#eb4034", border: 1 },
+                                        "& button": { borderRadius: 2, backgroundColor: "var(--quinary-background-color)", color: "var(--text-color)", transition: "color var(--transition-delay)" },
+                                        "& button.Mui-selected": { backgroundColor: "var(--tertiary-background-color)", color: "var(--text-color)", transition: "color var(--transition-delay)"},
+                                        '@media (max-width: 500px)': {
+                                            "& button": { fontSize: "9px" },
+                                            "& button.Mui-selected": { fontSize: "9px" }
+                                          },
+                                    }}>
+                                    <Tab className={s.tab} label="Engine" value="1" />
+                                    <Tab className={s.tab} label="Transmission" value="2" />
+                                    <Tab className={s.tab} label="Wheels/Brakes" value="3" />
+                                </TabList>
+                            </Box>
+                            <TabPanel ref={engineTabRef} className={`${s.tabPanel} ${s.tabPanelRight} ${isEngineTabVisible ? s.animateTabPanelRight : ''}`} value="1">
+                                <SpecTab imgUrl={"bmwengine.png"} list={car!.engineSpecs} />
+                            </TabPanel>
+                            <TabPanel ref={transmissionTabRef} className={`${s.tabPanel} ${isNext ? s.tabPanelLeft : s.tabPanelRight} ${isTransmissionTabVisible ? (isNext ? s.animateTabPanelLeft : s.animateTabPanelRight) : ''}`} value="2">
+                                <SpecTab imgUrl={"transmission.png"} list={car!.transmissionSpecs} />
+                            </TabPanel>
+                            <TabPanel ref={brakesTabRef} className={`${s.tabPanel} ${s.tabPanelLeft} ${isBrakesTabVisible ? s.animateTabPanelLeft : ''}`} value="3">
+                                <SpecTab imgUrl={"carbrakes.png"} list={car!.brakeWheelSpecs} />
+                            </TabPanel>
+                        </TabContext>
+                    </Box>
             </div>
             <div ref={testDriveRef} className={`${s.testDriveContainer} ${isTestDriveVisible ? s.animateFadeInTopVideo : ''}`}>
                 <h1 className={s.title}>Trailer</h1>
