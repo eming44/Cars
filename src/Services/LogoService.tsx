@@ -10,5 +10,9 @@ export function getLogo(manufacturer: string) {
             return "lamborghinilogo.png";
         case "Bugatti":
             return "bugattilogo.png";
+        case "Mercedes-Benz":
+            return "mercedeslogo.png";
+        case "Porsche":
+            return "porschelogo.png";
     }
 }

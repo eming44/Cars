@@ -3,7 +3,8 @@
     flex-direction: row;
     gap: 20px;
     padding: 20px 0px;
-
+    min-height: 95vh;
+    
     background-color: var(--background-color);
     transition: background-color, var(--transition-delay);
 }
@@ -115,6 +116,7 @@
     font-size: large;
     justify-content: center;
     align-items: center;
+    min-width: 170px;
 
     color: var(--text-color);
     background-color: var(--secondary-background-color);

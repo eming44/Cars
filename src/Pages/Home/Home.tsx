@@ -10,6 +10,8 @@ import { AudiModels } from "../../Enums/AudiModels";
 import { BmwModels } from "../../Enums/BmwModels";
 import { BugattiModels } from "../../Enums/BugattiModels";
 import s from './Home.module.css';
+import { MercedesModels } from "../../Enums/MercedesModels";
+import { PorscheModels } from "../../Enums/PorscheModels";
 
 export const Home:FunctionComponent = () => {
     const manufacturerOptions = getEnumValuesAndKeys(Manufacturers);
@@ -48,6 +50,12 @@ export const Home:FunctionComponent = () => {
                 break;
             case Manufacturers.Bugatti:
                 setModels(BugattiModels);
+                break;
+            case Manufacturers.MercedesBenz:
+                setModels(MercedesModels);
+                break;
+            case Manufacturers.Porsche:
+                setModels(PorscheModels);
                 break;
         }
       };
