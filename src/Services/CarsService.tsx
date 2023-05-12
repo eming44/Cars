@@ -5,27 +5,11 @@ import { Engines } from "../Enums/Engines";
 import { FerrariModels } from "../Enums/FerrariModels";
 import { LamborghiniModels } from "../Enums/LamborghiniModels";
 import { Manufacturers } from "../Enums/Manufacturers";
+import { MercedesModels } from "../Enums/MercedesModels";
+import { PorscheModels } from "../Enums/PorscheModels";
 import { Transmissions } from "../Enums/Transmissions";
 
 const cars =  [
-    // { id: 0, url: 'audia3.jpg', manufacturer: "Audi", model: "A3", generation: "8Y", modification: "35 TFSI", releaseDate: 2020, acceleration: 8.4, maxSpeed: 232, hp: 150, engineDisplacement: 1498, torque: 250, numberCilinders: 4, fuel: "petrol", weight: 1320, cfc: "4.7-4.9", transmissionType: "Automatic", gears: 7, description: "" },
-    // { id: 1, url: 'audia5.jpg', manufacturer: "Audi", model: "A5", generation: "F5", modification: "50 TDI", releaseDate: 2019, acceleration: 5.3, maxSpeed: 250, hp: 286, engineDisplacement: 2967, torque: 620, numberCilinders: 6, fuel: "diesel", weight: 1700, cfc: "5.6-6.0", transmissionType: "Automatic", gears: 8, description: "" },
-    // { id: 2, url: 'audia7.jpg', manufacturer: "Audi", model: "A7", generation: "C8", modification: "55 TFSI", releaseDate: 2017, acceleration: 5.3, maxSpeed: 250, hp: 340, engineDisplacement: 2995, torque: 500, numberCilinders: 6, fuel: "petrol", weight: 1815, cfc: "6.8-7.2", transmissionType: "Automatic", gears: 7, description: "" },
-
-    // { id: 3, url: 'bmw3.jpg', manufacturer: "BMW", model: "3 Series", generation: "G20", modification: "M340i", releaseDate: 2022, acceleration: 4.4, maxSpeed: 250, hp: 374, engineDisplacement: 2998, torque: 500, numberCilinders: 6, fuel: "petrol", weight: 1725, cfc: "7.8-8.5", transmissionType: "Automatic", gears: 8, description: "The BMW M340i comes with a powerful, inline six-cylinder engine that can produce around 382 hp. This powerful engine gets paired with an eight-speed transmission that can adjust depending on what drive mode you're in. This means that your shifts can increase in speed when you're in sports mode.",  interiorImageUrls: ["bmw3int.jpg", "bmw3int1.png", "bmw3int2.jpg", "bmw3int3.jpg",], frontDiscType: "Ventilated", rareDiscType: "Ventilated", frontDiscMaterial: "Cast iron", rareDiscMaterial: "Cast iron", frontPadsMaterial: "Ceramic", rarePadsMaterial: "Ceramic"}, 
-      // { id: 4, url: 'bmw5.jpg', manufacturer: "BMW", model: "5 Series", generation: "G30", modification: "M550i", releaseDate: 2020, acceleration: 3.8, maxSpeed: 250, hp: 530, engineDisplacement: 4395, torque: 750, numberCilinders: 8, fuel: "petrol", weight: 1915, cfc: "9.7-10.0", transmissionType: "Automatic", gears: 8, description: "" },
-    // { id: 5, url: 'bmw8.jpg', manufacturer: "BMW", model: "8 Series", generation: "G16", modification: "M850i", releaseDate: 2022, acceleration: 3.9, maxSpeed: 250, hp: 530, engineDisplacement: 4395, torque: 750, numberCilinders: 8, fuel: "petrol", weight: 2010, cfc: "10.7-11", transmissionType: "Automatic", gears: 8, description: "" },
-   
-    // { id: 6, url: 'mercedesc.jpg', manufacturer: "Mercedes-Benz", model: "C-class", generation: "W206", modification: "AMG C 43", releaseDate: 2022, acceleration: 4.6, maxSpeed: 250, hp: 408, engineDisplacement: 1991, torque: 500, numberCilinders: 4, fuel: "petrol", weight: 1690, cfc: "8.7-9.1", transmissionType: "Automatic", gears: 9, description: "" },
-    // { id: 7, url: 'mercedese.jpg', manufacturer: "Mercedes-Benz", model: "E-class", generation: "C238", modification: "AMG E 53", releaseDate: 2020, acceleration: 4.4, maxSpeed: 250, hp: 435, engineDisplacement: 2999, torque: 520, numberCilinders: 6, fuel: "petrol", weight: 1895, cfc: "8.6-8.9", transmissionType: "Automatic", gears: 9, description: "" },
-    // { id: 8, url: 'mercedess.jpg', manufacturer: "Mercedes-Benz", model: "S-class", generation: "Z223", modification: "S 680 V12", releaseDate: 2021, acceleration: 4.5, maxSpeed: 250, hp: 612, engineDisplacement: 5980, torque: 900, numberCilinders: 12, fuel: "petrol", weight: 2275, cfc: "13.4-14.4", transmissionType: "Automatic", gears: 9, description: "" },
-
-    // { id: 9, url: 'porschedakar.jpg', manufacturer: "Porsche", model: "911", generation: "Dakar (992)", modification: "3.0 AWD PDK", releaseDate: 2022, acceleration: 3.4, maxSpeed: 	240, hp: 480, engineDisplacement: 2981, torque: 570, numberCilinders: 6, fuel: "petrol", weight: 1605, cfc: "11.3", transmissionType: "Automatic", gears: 8, description: "" },
-    
-    // { id: 10, url: 'porschecayenne.jpg', manufacturer: "Porsche", model: "Cayenne", generation: "III Coupe", modification: "Turbo GT 4.0 V8 Tiptronic S", releaseDate: 2021, acceleration: 3.3, maxSpeed: 300, hp: 640, engineDisplacement: 3996, torque: 850, numberCilinders: 8, fuel: "petrol", weight: 2220, cfc: "11.9", transmissionType: "Automatic", gears: 8, description: "" },
- 
-    // { id: 11, url: 'ferrarisf90.jpg', manufacturer: "Ferrari", model: "SF90", generation: "Spider", modification: "4.0 V8 PHEV AWD F1", releaseDate: 2020, acceleration: 2.5, maxSpeed: 340, hp: 1000, engineDisplacement: 3990, torque: 800, numberCilinders: 8, fuel: "petrol / electric", weight: 1670, cfc: "7.9", transmissionType: "Automatic", gears: 8, description: "" },
-
     { id: 0, url: 'audirs7.jpg', 
     baseSpecs: { manufacturer: Manufacturers.Audi, model: AudiModels.RS7, modification: "4.0 TFSI V8 quattro tiptronic MHEV", generation: "Sportback (C8)", releaseDate: 2019, fuelConsumption: "12.2-12.7", maximumSpeed: 250, acceleration: 3.6, weight: 1950 }, 
     engineSpecs: { horsePower: 600, engineDisplacement: 3996, fuelType: Engines.Petrol, cilindersNumber: 8, torque: 800 }, 
@@ -36,7 +20,37 @@ const cars =  [
     interiorImageUrls: ["audirs7int.jpg", "audirs7int1.jpg", "audirs7int2.jpg", "audirs7int3.jpg",],
     trailerUrl: "https://www.youtube.com/embed/Leq8UI_EYt4" },
 
-    { id: 3, url: 'bmw3.jpg', 
+    { id: 1, url: 'audir8.jpg', 
+    baseSpecs: { manufacturer: Manufacturers.Audi, model: AudiModels.R8, modification: "Performance 5.2 FSI V10", generation: "II Spyder", releaseDate: 2019, fuelConsumption: "13.3-13.5", maximumSpeed: 329, acceleration: 3.2, weight: 1695 }, 
+    engineSpecs: { horsePower: 620, engineDisplacement: 5204, fuelType: Engines.Petrol, cilindersNumber: 10, torque: 580 }, 
+    transmissionSpecs: {  transmission: Transmissions.Automatic, gears: 7 }, 
+    brakeWheelSpecs: { frontDiscType: "Ventilated", rareDiscType: "Ventilated", frontDiscMaterial: "Cast iron", rareDiscMaterial: "Cast iron", frontPadsMaterial: "Ceramic", rarePadsMaterial: "Ceramic"}, 
+    description: "The Audi R8 is a supercar from a dying breed. As makers add turbochargers to their cars to meet ever-stricter emissions targets, the naturally aspirated engine is falling out of favour. In some ways, the R8 is a fantastic last hurrah. But, while the 5.2-litre V10 is a focal point of the car, there's much more to the R8 than simply a big engine.", 
+    exteriorImageUrls: ["audir8ext.jpg", "audir8ext1.jpg", "audir8ext2.jpg", "audir8ext3.jpg",],
+    interiorImageUrls: ["audir8int.jpg", "audir8int1.jpg", "audir8int2.jpg", "audir8int3.jpg",],
+    trailerUrl: "https://www.youtube.com/embed/acbpmyH4RAU" },
+
+    { id: 2, url: 'bmwm4.jpg', 
+    baseSpecs: { manufacturer: Manufacturers.Bmw, model: BmwModels.M4, modification: "CSL 3.0 M Steptronic", generation: "G82", releaseDate: 2022, fuelConsumption: "9.8-10.1", maximumSpeed: 307, acceleration: 3.7, weight: 1625 }, 
+    engineSpecs: { horsePower: 550, engineDisplacement: 2993, fuelType: Engines.Petrol, cilindersNumber: 6, torque: 650 }, 
+    transmissionSpecs: {  transmission: Transmissions.Automatic, gears: 8 }, 
+    brakeWheelSpecs: { frontDiscType: "Ventilated", rareDiscType: "Ventilated", frontDiscMaterial: "Cast iron", rareDiscMaterial: "Cast iron", frontPadsMaterial: "Ceramic", rarePadsMaterial: "Ceramic"}, 
+    description: "The new BMW M4 CSL represents a highly concentrated showcase for the racing craft of BMW M GmbH and its expertise in powertrain and chassis development and lightweight design. For example, the company can call on many years of experience in working with carbon fiber reinforced plastic (CFRP) for body, chassis, and interior components.", 
+    exteriorImageUrls: ["bmwm4ext.jpg", "bmwm4ext1.jpg", "bmwm4ext2.jpg", "bmwm4ext3.jpg",],
+    interiorImageUrls: ["bmwm4int.jpg", "bmwm4int1.jpg", "bmwm4int2.jpg", "bmwm4int3.jpg",],
+    trailerUrl: "https://www.youtube.com/embed/oSpdlJRTTNk" },
+
+    { id: 3, url: 'bmwm5.jpg', 
+    baseSpecs: { manufacturer: Manufacturers.Bmw, model: BmwModels.M5, modification: "CS 4.4 V8 xDrive Steptronic", generation: "F90 LCI", releaseDate: 2021, fuelConsumption: "10.9-11.3", maximumSpeed: 305, acceleration: 3, weight: 1825 }, 
+    engineSpecs: { horsePower: 635, engineDisplacement: 4395, fuelType: Engines.Petrol, cilindersNumber: 8, torque: 750 }, 
+    transmissionSpecs: {  transmission: Transmissions.Automatic, gears: 8 }, 
+    brakeWheelSpecs: { frontDiscType: "Ventilated", rareDiscType: "Ventilated", frontDiscMaterial: "Cast iron", rareDiscMaterial: "Cast iron", frontPadsMaterial: "Ceramic", rarePadsMaterial: "Ceramic"}, 
+    description: "The new BMW M4 CSL represents a highly concentrated showcase for the racing craft of BMW M GmbH and its expertise in powertrain and chassis development and lightweight design. For example, the company can call on many years of experience in working with carbon fiber reinforced plastic (CFRP) for body, chassis, and interior components.", 
+    exteriorImageUrls: ["bmwm5ext.jpg", "bmwm5ext1.jpg", "bmwm5ext2.jpg", "bmwm5ext3.jpg",],
+    interiorImageUrls: ["bmwm5int.jpg", "bmwm5int1.jpg", "bmwm5int2.jpg", "bmwm5int3.jpg",],
+    trailerUrl: "https://www.youtube.com/embed/vQXvyV0zIP4" },
+
+    { id: 4, url: 'bmw3.jpg', 
     baseSpecs: { manufacturer: Manufacturers.Bmw, model: BmwModels.Series3, modification: "M340i", generation: "G20", releaseDate: 2022, fuelConsumption: "7.8-8.5", maximumSpeed: 250, acceleration: 4.4, weight: 1725 }, 
     engineSpecs: { horsePower: 374, engineDisplacement: 2998, fuelType: Engines.Petrol, cilindersNumber: 6, torque: 500 }, 
     transmissionSpecs: {  transmission: Transmissions.Automatic, gears: 8 }, 
@@ -46,7 +60,7 @@ const cars =  [
     interiorImageUrls: ["bmw3int.jpg", "bmw3int1.png", "bmw3int2.jpg", "bmw3int3.jpg",],
     trailerUrl: "https://www.youtube.com/embed/XaOrAnxEiI8" },
 
-    { id: 4, url: 'bugattichiron.jpg', 
+    { id: 5, url: 'bugattichiron.jpg', 
     baseSpecs: { manufacturer: Manufacturers.Bugatti, model: BugattiModels.Chiron, modification: "Super Sport 8.0 W16", generation: "Chiron", releaseDate: 2021, fuelConsumption: "40.3", maximumSpeed: 440, acceleration: 2.4, weight: 1995 }, 
     engineSpecs: { horsePower: 1600, engineDisplacement: 7993, fuelType: Engines.Petrol, cilindersNumber: 16, torque: 1600 }, 
     transmissionSpecs: {  transmission: Transmissions.Automatic, gears: 7 }, 
@@ -55,6 +69,16 @@ const cars =  [
     exteriorImageUrls: ["bugattichironext.jpg", "bugattichironext1.jpg", "bugattichironext2.jpg", "bugattichironext3.jpg",], 
     interiorImageUrls: ["bugattichironint.jpg", "bugattichironint1.jpg", "bugattichironint2.jpg", "bugattichironint3.jpg",],
     trailerUrl: "https://www.youtube.com/embed/NMThdHhrLoM" },
+
+    { id: 10, url: 'ferrari296gtb.jpg', 
+    baseSpecs: { manufacturer: Manufacturers.Ferrari, model: FerrariModels.gtb296, modification: "3.0 V6 PHEV F1 DCT", generation: "296 GTB", releaseDate: 2022, fuelConsumption: "6.4", maximumSpeed: 330, acceleration: 2.9, weight: 1470 }, 
+    engineSpecs: { horsePower: 663, engineDisplacement: 2992, fuelType: Engines.Petrol, cilindersNumber: 6, torque: 740 }, 
+    transmissionSpecs: {  transmission: Transmissions.Automatic, gears: 8 }, 
+    brakeWheelSpecs: { frontDiscType: "Ventilated", rareDiscType: "Disc", frontDiscMaterial: "Cast iron", rareDiscMaterial: "Cast iron", frontPadsMaterial: "Ceramic", rarePadsMaterial: "Ceramic"}, 
+    description: "Any doubts about Ferrari having neutered its latest creation by shoving a V6 amidships are dispelled as soon as the first time the 2022 Ferrari 296 GTB rumbles past. There’s a sonorous engine note crushing the air, a thunder of combustion that serves as a reminder that the gradual and inevitable demise of petrol power will one day leave a black hole in the automotive landscape. ", 
+    exteriorImageUrls: ["ferrari296gtbext.jpg", "ferrari296gtbext1.jpg", "ferrari296gtbext2.jpg", "ferrari296gtbext3.jpg",],
+    interiorImageUrls: ["ferrari296gtbint.jpg", "ferrari296gtbint1.jpg", "ferrari296gtbint2.jpg", "ferrari296gtbint3.jpg",],
+    trailerUrl: "https://www.youtube.com/embed/D7Zv2kSBagc" },
  
     { id: 11, url: 'ferrarisf90.jpg', 
     baseSpecs: { manufacturer: Manufacturers.Ferrari, model: FerrariModels.sf90, modification: "4.0 V8 PHEV AWD F1", generation: "Spider", releaseDate: 2020, fuelConsumption: "7.9", maximumSpeed: 340, acceleration: 2.5, weight: 1670 }, 
@@ -85,6 +109,36 @@ const cars =  [
     exteriorImageUrls: ["lamborghinirevueltoext.jpg", "lamborghinirevueltoext1.jpg", "lamborghinirevueltoext2.jpg", "lamborghinirevueltoext3.jpg",], 
     interiorImageUrls: ["lamborghinirevueltoint.jpg", "lamborghinirevueltoint1.jpg", "lamborghinirevueltoint2.jpg", "lamborghinirevueltoint3.jpg",],
     trailerUrl: "https://www.youtube.com/embed/sitXeGjm4Mc" },
+
+    { id: 6, url: 'mercedesamggtr.jpg', 
+    baseSpecs: { manufacturer: Manufacturers.MercedesBenz, model: MercedesModels.AMGGTR, modification: "R 4.0 V8 DCT", generation: "AMG GT (C190, facelift)", releaseDate: 2017, fuelConsumption: "12.7", maximumSpeed: 318, acceleration: 3.6, weight: 1555 }, 
+    engineSpecs: { horsePower: 585, engineDisplacement: 3982, fuelType: Engines.Petrol, cilindersNumber: 8, torque: 700 }, 
+    transmissionSpecs: {  transmission: Transmissions.Automatic, gears: 7 }, 
+    brakeWheelSpecs: { frontDiscType: "Ventilated", rareDiscType: "Disc", frontDiscMaterial: "Cast iron", rareDiscMaterial: "Cast iron", frontPadsMaterial: "Ceramic", rarePadsMaterial: "Ceramic"}, 
+    description: "Like all GTs, the heart of the GT R is AMG’s stonking M178 twin-turbo 4-litre V8. This engine might feel familiar thanks to its use across a whole generation of AMG models from C-classes to G-classes, but for the GT it was a specific iteration designed for AMG’s supercar and motorsport programs. There were a whole range of small detail changes, but the most obvious difference was its dry-sump layout, a feature that allowed AMG to mount it much lower in the chassis than other AMG models.", 
+    exteriorImageUrls: ["mercedesamggtrext.jpg", "mercedesamggtrext1.jpg", "mercedesamggtrext2.jpg", "mercedesamggtrext3.jpg",], 
+    interiorImageUrls: ["mercedesamggtrint.jpg", "mercedesamggtrint1.jpg", "mercedesamggtrint2.jpg", "mercedesamggtrint3.jpg",],
+    trailerUrl: "https://www.youtube.com/embed/csAXruiBLTs" },
+
+    { id: 7, url: 'porsche911gt3.jpg', 
+    baseSpecs: { manufacturer: Manufacturers.Porsche, model: PorscheModels.GT3911, modification: "GT3 4.0", generation: "911 (992)", releaseDate: 2021, fuelConsumption: "21.5", maximumSpeed: 320, acceleration: 3.9, weight: 1418 }, 
+    engineSpecs: { horsePower: 510, engineDisplacement: 3996, fuelType: Engines.Petrol, cilindersNumber: 6, torque: 470 }, 
+    transmissionSpecs: {  transmission: Transmissions.Manual, gears: 6 }, 
+    brakeWheelSpecs: { frontDiscType: "Ventilated", rareDiscType: "Disc", frontDiscMaterial: "Cast iron", rareDiscMaterial: "Cast iron", frontPadsMaterial: "Ceramic", rarePadsMaterial: "Ceramic"}, 
+    description: "With an exclusive naturally aspirated engine and race car-inspired components, the 2022 Porsche 911 GT3 is optimized for driver engagement and track-day glory. Porsche enhances its most visceral 911 variant with a control-arm front suspension—the first on a 911 road car—and an unusual rear wing that's mounted at the top instead of the bottom.", 
+    exteriorImageUrls: ["porsche911gt3ext.jpg", "porsche911gt3ext1.jpg", "porsche911gt3ext2.jpg", "porsche911gt3ext3.jpg",], 
+    interiorImageUrls: ["porsche911gt3int.jpg", "porsche911gt3int1.jpg", "porsche911gt3int2.jpg", "porsche911gt3int3.jpg", "porsche911gt3int4.jpg",],
+    trailerUrl: "https://www.youtube.com/embed/XdBDWTLe49g" },
+
+    { id: 8, url: 'porsche718gt4rs.jpg', 
+    baseSpecs: { manufacturer: Manufacturers.Porsche, model: PorscheModels.GT4718, modification: "GT4 RS 4.0 PDK", generation: "718 Cayman (982)", releaseDate: 2022, fuelConsumption: "13.2", maximumSpeed: 315, acceleration: 3.4, weight: 1464 }, 
+    engineSpecs: { horsePower: 493, engineDisplacement: 3996, fuelType: Engines.Petrol, cilindersNumber: 6, torque: 449 }, 
+    transmissionSpecs: {  transmission: Transmissions.Automatic, gears: 7 }, 
+    brakeWheelSpecs: { frontDiscType: "Ventilated", rareDiscType: "Disc", frontDiscMaterial: "Cast iron", rareDiscMaterial: "Cast iron", frontPadsMaterial: "Ceramic", rarePadsMaterial: "Ceramic"}, 
+    description: "While the parts that have been used to make the new 718 Cayman GT4 RS are great, the total sum is even greater. It may seem like a track-honed weapon of a sports car, but you can easily tap into this car’s supreme ability on road too. With the RS, Porsche seems to have perfected the small mid-engined sports-car formula so the Cayman is no longer in the 911’s shadow. In fact, it may even be the other way around.", 
+    exteriorImageUrls: ["porsche718gt4rsext.jpg", "porsche718gt4rsext1.jpg", "porsche718gt4rsext2.jpg", "porsche718gt4rsext3.jpg", "porsche718gt4rsext4.jpg",], 
+    interiorImageUrls: ["porsche718gt4rsint.jpg", "porsche718gt4rsint2.jpg", "porsche718gt4rsint3.jpg",],
+    trailerUrl: "https://www.youtube.com/embed/XdBDWTLe49g" },
 ];
 
 export function getCars() {

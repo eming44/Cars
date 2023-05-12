@@ -93,7 +93,7 @@ export const CarsPage: FunctionComponent = () => {
         const sectionRef = sectionRefs[i].sectionRef as React.RefObject<HTMLDivElement>;
         sectionRef.current?.scrollIntoView({
             behavior: 'smooth',
-            block: 'start'
+            block: 'center'
         });
     }}>
         <div className={s.navBtnContainer}>
