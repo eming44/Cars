@@ -50,7 +50,7 @@ export const CarsPage: FunctionComponent = () => {
         return filteredManufacturers.map((x, i) => {
             const sectionRef = React.createRef();
             sectionRefs.push({sectionRef: sectionRef, sectionName: x});
-            return <div className={s.manufacturerSection} ref={sectionRef as React.RefObject<HTMLDivElement>}>
+            return <div key={i} className={s.manufacturerSection} ref={sectionRef as React.RefObject<HTMLDivElement>}>
                 <div className={s.horizontalContainer}>
                     <img className={s.sectionLogoImage} src={require('' + "../../assets/" + getLogo(x))} />
                     <div className={s.rightLine}/>
@@ -104,15 +104,19 @@ export const CarsPage: FunctionComponent = () => {
 
     return(
         <div className={s.container}>
-            <div className={s.listItemContainer}>
-                {itemsList}
-            </div>
-            <div className={s.navigationContainer}>
-                <h2 className={s.sectionTitle}>Filtered manufacturers</h2>
-                <ul className={s.navigationListContainer}>
-                    {navigationBtns}
-                </ul>
-            </div>
+            {itemsList.length > 0 ?
+            <>
+                <div className={s.listItemContainer}>
+                    {itemsList}
+                </div>
+                <div className={s.navigationContainer}>
+                    <h2 className={s.sectionTitle}>Filtered manufacturers</h2>
+                    <ul className={s.navigationListContainer}>
+                        {navigationBtns}
+                    </ul>
+                </div>
+            </>
+            : <h1 className={s.errorMessage}>No matches found, please check the cars list to see the currently uploaded vehicles.</h1> }
         </div>
     );
 };

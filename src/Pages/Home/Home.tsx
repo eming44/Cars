@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, useLayoutEffect } from "react";
+import { FunctionComponent, useState } from "react";
 import Select, { SingleValue } from 'react-select';
 import { Manufacturers } from "../../Enums/Manufacturers";
 import { FerrariModels } from "../../Enums/FerrariModels";
@@ -9,9 +9,9 @@ import { useNavigate, createSearchParams } from 'react-router-dom';
 import { AudiModels } from "../../Enums/AudiModels";
 import { BmwModels } from "../../Enums/BmwModels";
 import { BugattiModels } from "../../Enums/BugattiModels";
-import s from './Home.module.css';
 import { MercedesModels } from "../../Enums/MercedesModels";
 import { PorscheModels } from "../../Enums/PorscheModels";
+import s from './Home.module.css';
 
 export const Home:FunctionComponent = () => {
     const manufacturerOptions = getEnumValuesAndKeys(Manufacturers);
@@ -28,12 +28,17 @@ export const Home:FunctionComponent = () => {
     const [selectedTransmission, setSelectedTransmission] = useState("");
     const [maxHp, setMaxHp] = useState(0);
     const [minHp, setMinHp] = useState(0);
-    const [selectedReleasedYear, setSelectedReleasedYear] = useState(0);
+    const [selectedReleasedYear, setSelectedReleasedYear] = useState(minReleasedYear);
 
     const navigate = useNavigate();
     const handleManufacturerChange = (newValue: SingleValue<{ value: string; label: Manufacturers; }>) => {
-        console.log(newValue?.value);
-        console.log(newValue?.value as string);
+        if (!newValue?.value) {
+            setSelectedManufacturer("");
+            setModelsList([]);
+            setIsManufacturerSelected(false);
+            return;
+        }
+
         setSelectedManufacturer(newValue?.value as string);
         switch(newValue?.value) {
             case Manufacturers.Audi:
@@ -60,20 +65,35 @@ export const Home:FunctionComponent = () => {
         }
       };
 
-    const handleModelChange = (newValue: SingleValue<{ value?: string}>) => {
-      setSelectedModel(newValue?.value as string);
+    const handleModelChange = (newValue: SingleValue<{ value?: string }>) => {
+        if (!newValue?.value) {
+            setSelectedModel("");
+            return;
+        }
+
+        setSelectedModel(newValue?.value as string);
     };
 
     const handleEngineChange = (newValue: SingleValue<{ value: string; label: Engines; }>) => {
+        if (!newValue?.value) {
+            setSelectedEngine("");
+            return;
+        }
+
         setSelectedEngine(newValue?.value as string);
     }
 
     const handleTransmissionChange = (newValue: SingleValue<{ value: string; label: Transmissions; }>) => {
+        if (!newValue?.value) {
+            setSelectedTransmission("");
+            return;
+        }
+
         setSelectedTransmission(newValue?.value as string);
     }
 
     const handleMaxHpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setMaxHp(+e.target.value);
+        setMaxHp(+e.target.value);
     }
 
     const handleMinHpChange = (e: React.ChangeEvent<HTMLInputElement>) => {

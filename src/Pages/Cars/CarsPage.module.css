@@ -138,6 +138,7 @@
 }
 
 .errorMessage {
+    margin-left: 50px;
     color: var(--text-color);
     transition: color, var(--transition-delay);
 }
